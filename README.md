@@ -9,8 +9,9 @@ Standard `ROS` packages including `Rviz`, `Gazebo`, `Moveit` and `Octomap` are u
 
 ## Running the program
 To run the experiment, execute the following command:
-  roslaunch ur5_pickplace_task pick_place_task.launch
-  
+```
+roslaunch ur5_pickplace_task pick_place_task.launch
+```  
 On running the command, `Rviz` and `Gazebo` windows are launched and the task is initiated.
 
 ## Screen Recording
