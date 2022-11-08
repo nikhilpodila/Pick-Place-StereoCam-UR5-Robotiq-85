@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gui" default="True" />
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find ur5_description)/urdf/ur5_robotiq85_gripper_stereocam.urdf.xacro"/>
+  
+  <param name="use_gui" value="$(arg gui)"/>
+  <!--node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/-->
+  
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/-->
+  <!--node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 link1_parent link1 100" /-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur5_description)/config/ur5_stereocams.rviz" required="true"/>
+  <node name="octomap_server_node" pkg="octomap_server" type="octomap_server_node">
+    <param name="cloud_in" value="/ur5/stereo_camera/points2"/>
+    <param name="filter_ground" value="false"/>
+  </node>
+</launch>
