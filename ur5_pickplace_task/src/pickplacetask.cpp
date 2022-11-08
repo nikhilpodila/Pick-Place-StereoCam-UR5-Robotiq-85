@@ -17,7 +17,6 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "pickplace");
     ros::NodeHandle nh("~");
-    std::cout<<"tada";
     
     // ROS spinning must run to receive updates from robot
     ros::AsyncSpinner spinner(1);
