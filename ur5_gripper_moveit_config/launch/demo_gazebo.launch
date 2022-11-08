@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- specify the planning pipeline -->
+  <arg name="pipeline" default="ompl" />
+
+  <!-- Gazebo specific options -->
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="paused" default="false"/>
+
+  <!-- launch the gazebo simulator and spawn the robot -->
+  <include file="$(dirname)/gazebo.launch" >
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+  </include>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+  <param name="robot_description_planning/shape_transform_cache_lookup_wait_time" value="0.5" />
+  
+  <node ns="/ur5/stereo_camera" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" output="screen"/>
+
+  <include file="$(dirname)/demo.launch" pass_all_args="true">
+    <!-- robot description is loaded by gazebo.launch, to enable Gazebo features -->
+    <arg name="load_robot_description" value="false" />
+    <arg name="moveit_controller_manager" value="ros_control" />
+  </include>
+</launch>

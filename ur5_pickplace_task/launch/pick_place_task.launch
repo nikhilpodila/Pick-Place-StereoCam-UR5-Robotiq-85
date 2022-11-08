@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find ur5_gripper_moveit_config)/launch/demo_gazebo.launch" />
+    <node name="pickplacetask" type="pickplacetask" pkg="ur5_pickplace_task" output="screen" />
+</launch>
