@@ -14,17 +14,17 @@ ur5_arm_controller:
       i: 10
       i_clamp: 100
     shoulder_lift_joint:
-      p: 5000
-      d: 30
-      i: 100
+      p: 500
+      d: 20
+      i: 10
       i_clamp: 400
     elbow_joint:
-      p: 5000
-      d: 50
-      i: 10
+      p: 500
+      d: 20
+      i: 5
       i_clamp: 100
     wrist_1_joint:
-      p: 200
+      p: 100
       d: 20
       i: 10
       i_clamp: 100

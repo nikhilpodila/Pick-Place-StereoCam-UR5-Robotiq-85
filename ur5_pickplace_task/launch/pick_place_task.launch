@@ -1,4 +1,7 @@
 <launch>
     <include file="$(find ur5_gripper_moveit_config)/launch/demo_gazebo.launch" />
-    <node name="pickplacetask" type="pickplacetask" pkg="ur5_pickplace_task" output="screen" />
+    <node name="pickplace" type="pickplace" pkg="ur5_pickplace_task" output="screen">
+        <rosparam command="load" file="$(dirname)/../config/pick_place_config.yaml" />    
+    </node>
+
 </launch>
